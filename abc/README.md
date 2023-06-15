@@ -1,2 +1,0 @@
-# ubuntu-release
-ubuntu release
