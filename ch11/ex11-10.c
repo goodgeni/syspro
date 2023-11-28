@@ -2,6 +2,7 @@
 #include <sys/wait.h>
 #include <sys/types.h>
 #include <unistd.h>
+<<<<<<< HEAD
 
 #define MSGSIZE 16
 
@@ -15,6 +16,24 @@ void onerror(char *msg)
 }
 
 main()
+=======
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+
+#define MSGSIZE 16
+
+//void parent(int [][]);
+//int child(int []);
+
+void onerror(char *msg)
+{
+	printf("%s", msg);
+	exit(1);
+}
+
+int main()
+>>>>>>> f4951ba (11)
 {
 	int p1[2], p2[2];
 	char msg[MSGSIZE];
@@ -37,7 +56,11 @@ main()
 
 	if(pid1 > 0 && pid2 > 0) {
 		printf("parent: %d\n", getpid());
+<<<<<<< HEAD
 		close(p1[1]); close(p1[1]);
+=======
+		close(p1[1]); close(p2[1]);
+>>>>>>> f4951ba (11)
 
 		FD_ZERO(&initset);
 		FD_SET(p1[0], &initset);
@@ -58,10 +81,20 @@ main()
 		printf("child1: %d\n", getpid());
 		close(p1[0]); close(p2[0]); close(p2[1]);
 
+<<<<<<< HEAD
 		for(i = 0; i < 3; i++) {
 			sleep((i + 1) % 4);
 			printf("child1: send message %d\n", i);
 			write(p1[1], "i'm child1", MSGSIZE);
+=======
+//		char buf1[] = "i'm child1";
+		for(i = 0; i < 3; i++) {
+			sleep((i + 1) % 4);
+			printf("child1: send message %d\n", i);
+//			write(p1[1], buf1, sizeof(buf1));
+			write(p1[1], "i'm child1", 11);
+
+>>>>>>> f4951ba (11)
 		}
 		printf("child1: bye!\n");
 		exit(0);
@@ -73,7 +106,11 @@ main()
 		for(i = 0; i < 3; i++) {
 			sleep((i + 3) % 4);
 			printf("child2: send message %d\n", i);
+<<<<<<< HEAD
 			write(p2[1], "i'm child2", MSGSIZE);
+=======
+			write(p2[1], "i'm child2", 11);
+>>>>>>> f4951ba (11)
 		}
 		printf("child2: bye!\n");
 		exit(0);
