@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <wait.h>
-
 int main()
 {
 	int   counter  = 1;
